@@ -2,7 +2,7 @@
 <!-- NOTE: the string 'TODO' appears everywhere you need to fill in information. -->
 <html>
 <head>
-<title>TODO:Title For Your Game</title>
+<title>Drunk Simulator</title>
 <!-- NOTE: this CSS sets up the ".figure" class to center images, and instructs images in ".figure"s to have space around them and to render crisp pixel edges when scaled [e.g. for retina displays]. -->
 <style>
 .figure {
@@ -15,25 +15,29 @@
 </style>
 </head>
 <body>
-<h1>TODO: Title For Your Game</h1>
-<p>TODO: one-sentence summary of your game, highlighting the unique "hook" of the game.</p>
-<!-- the <div> wrapping this image centers it on the page. -->
-<!-- TODO: drawing showing the main view of the game during play -->
+<h1>Drunk Sim</h1>
+<p>Navigate from start to goal, with your arrow keys scrambled.</p>
 <div class="figure">
-<img src="game.png" />
+<img src="game.png"/>
 </div>
-<p>TODO: more information (2-3 sentences) about gameplay, referring to the image above.</p>
+<p>The game is played on a 5x5 board viewed from above. Tiles on the board either consist of some walkable segment, the goal, or a hole. The player uses the arrow keys to navigate along the walkable path from start to goal, avoiding any hole tiles, with the caveat that the arrow keys are scrambled. Once the player arrives at the goal or falls into a hole, a new random path is generated, the arrow keys are re-scrambled, and the player resets to the start of the path. The game is perpetual, with the player's score determined by how many goals they reach.</p>
 
 <h2>Gameplay</h2>
-<p>TODO: Describe how the game starts, plays (e.g. what are the controls), and ends.</p>
-<!-- TODO: illustrate your descriptions with more drawings -->
+<p><b>Start:</b> At the start of the game, the arrow keys are scrambled, and the player is placed on a board where all tiles are walkable. The intent of this to allow the player to practice playing with the scrambled keys. After 5 seconds, a starting position is chosen randomly among the tiles at the edges of the board, and a path is generated with the goal state at the end of the path. Path generation proceeds by performing DFS until all tiles are visited, ignoring any tiles that were backtracked. The player's position is then reset to the start of the generated path.</p>
 <div class="figure">
-<img src="before-reset.png" />
-<img src="after-reset.png" />
+<img src="practice.png" />
+<img src="game.png" />
+</div>
+<p><b>Movement:</b> When the arrow keys are pressed the player moves one cell in the indicated direction (post-scrambling). Note that if the player moves in a direction that would bring the player off the board from the start position, the player stays in the same position.</p>
+<!-- TODO: illustrate your descriptions with more drawings -->
+<p><b>Finish:</b> Once the player lands on the goal, the round is finished and the level is regenerated as described above.
+<p><b>Drawing:</b> The board is drawn with a skewed orthogonal projection so that the walkable segments appear to stick up slightly and the Y axis shears slightly left. Walkable segments should occupy only a portion of the tile as depicted, and should be smoothly shaded and use pastel colors. The flat areas of the walkable tiles, as well as hole tiles, should be colored black. Score should be indicated by drawing goal stars to the left of the board.</p>
+<div class="figure">
+<img src="tiles.png" />
 </div>
 
 <h2>Assets</h2>
-<p>TODO: Provide a link to any preliminary 3D models, sounds, or <a href="https://github.com/ixchow/amoeba-escape/blob/master/tiles.png">textures</a> for the game. Make sure to only link to assets with appropriate licenses.</p>
+<p>Basic meshes are provided in this <a href="drunk_sim.blend">drunk_sim.blend</a>. Blend file is based on <a href="http://graphics.cs.cmu.edu/courses/15-466-f18/game0-designs/default/stickochet.blend">stickochet.blend</a></p>
 
 </body>
 </html>
